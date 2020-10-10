@@ -1,13 +1,13 @@
 <template>
   <div class="intro">
       <div class="intro-inner">
-          <h1>Daily<br>Report</h1>
-          <router-link
-            class="button"
-            :to="todayUrl"
-          >
-            START
-          </router-link>
+        <h1>Daily<br>Report</h1>
+        <router-link
+          class="button"
+          :to="todayUrl"
+        >
+          START
+        </router-link>
       </div>
   </div>
 </template>
