@@ -1,5 +1,9 @@
 # daily-report-project
 
+아래 링크에서 구동된 앱을 확인할 수 있습니다.
+
+https://vue-daily-report-467ad.firebaseapp.com/ 
+
 ## Project setup
 ```
 npm install
