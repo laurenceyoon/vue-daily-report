@@ -1,32 +1,43 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <Nav></Nav>
     <router-view/>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import Nav from '@/components/Nav';
 
-#nav {
-  padding: 30px;
+import axios from 'axios';
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+import { mapGetters, mapActions } from 'vuex';
 
-    &.router-link-exact-active {
-      color: #42b983;
+export default {
+  components: {
+    Nav
+  },
+  methods: {
+    ...mapActions(['saveSettings']),
+    init() {
+      if (typeof this.savedSettings.starttime === 'undefined') {
+        this.getSettings();
+      }
+    },
+    getSettings() {
+      let url = `https://vue-daily-report-467ad.firebaseio.com/items/settings.json`;
+      axios.get(url).then((res) => {
+        this.saveSettings(res.data);
+      });
     }
+  },
+  created() {
+    this.init();
+  },
+  computed: {
+    ...mapGetters(['savedSettings']),
   }
 }
+</script>
+
+<style lang="scss" src="./assets/css/style.scss">
 </style>
