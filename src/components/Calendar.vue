@@ -40,7 +40,7 @@ export default {
           center: 'title',
           right: 'next'
         },
-        height: 600
+        height: 500
       }
     }
   },
